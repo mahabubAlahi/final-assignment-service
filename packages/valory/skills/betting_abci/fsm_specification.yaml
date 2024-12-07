@@ -8,7 +8,7 @@ default_start_state: DataPullRound
 final_states:
 - FinishedDecisionMakingRound
 - FinishedTxPreparationRound
-label: LearningAbciApp
+label: BettingAbciApp
 start_states:
 - DataPullRound
 states:

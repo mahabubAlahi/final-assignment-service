@@ -1,4 +1,4 @@
-## Learning Service
+## Betting Service
 
 A service to learn about [Olas](https://olas.network/) agents and [Open Autonomy](https://github.com/valory-xyz/open-autonomy).
 
@@ -22,13 +22,13 @@ A service to learn about [Olas](https://olas.network/) agents and [Open Autonomy
 1. Clone this repo:
 
     ```
-    git clone git@github.com:valory-xyz/academy-learning-service.git
+    git clone git@github.com:mahabubAlahi/final-assignment-service.git
     ```
 
 2. Create the virtual environment:
 
     ```
-    cd academy-learning-service
+    cd final-assignment-service
     poetry shell
     poetry install
     ```
@@ -99,5 +99,5 @@ A service to learn about [Olas](https://olas.network/) agents and [Open Autonomy
 4. Look at the service logs for one of the agents (on another terminal):
 
     ```
-    docker logs -f learningservice_abci_0
+    docker logs -f bettingservice_abci_0
     ```

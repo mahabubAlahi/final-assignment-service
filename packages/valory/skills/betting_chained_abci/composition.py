@@ -17,9 +17,9 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This package contains round behaviours of LearningChainedSkillAbciApp."""
+"""This package contains round behaviours of BettingChainedSkillAbciApp."""
 
-import packages.valory.skills.learning_abci.rounds as LearningAbci
+import packages.valory.skills.betting_abci.rounds as BettingAbci
 import packages.valory.skills.registration_abci.rounds as RegistrationAbci
 import packages.valory.skills.reset_pause_abci.rounds as ResetAndPauseAbci
 import packages.valory.skills.transaction_settlement_abci.rounds as TxSettlementAbci
@@ -36,12 +36,12 @@ from packages.valory.skills.termination_abci.rounds import (
 
 
 abci_app_transition_mapping: AbciAppTransitionMapping = {
-    RegistrationAbci.FinishedRegistrationRound: LearningAbci.DataPullRound,
-    LearningAbci.FinishedDecisionMakingRound: ResetAndPauseAbci.ResetAndPauseRound,
-    LearningAbci.FinishedTxPreparationRound: TxSettlementAbci.RandomnessTransactionSubmissionRound,
+    RegistrationAbci.FinishedRegistrationRound: BettingAbci.DataPullRound,
+    BettingAbci.FinishedDecisionMakingRound: ResetAndPauseAbci.ResetAndPauseRound,
+    BettingAbci.FinishedTxPreparationRound: TxSettlementAbci.RandomnessTransactionSubmissionRound,
     TxSettlementAbci.FinishedTransactionSubmissionRound: ResetAndPauseAbci.ResetAndPauseRound,
     TxSettlementAbci.FailedRound: TxSettlementAbci.RandomnessTransactionSubmissionRound,
-    ResetAndPauseAbci.FinishedResetAndPauseRound: LearningAbci.DataPullRound,
+    ResetAndPauseAbci.FinishedResetAndPauseRound: BettingAbci.DataPullRound,
     ResetAndPauseAbci.FinishedResetAndPauseErrorRound: RegistrationAbci.RegistrationRound,
 }
 
@@ -51,10 +51,10 @@ termination_config = BackgroundAppConfig(
     abci_app=TerminationAbciApp,
 )
 
-LearningChainedSkillAbciApp = chain(
+BettingChainedSkillAbciApp = chain(
     (
         RegistrationAbci.AgentRegistrationAbciApp,
-        LearningAbci.LearningAbciApp,
+        BettingAbci.BettingAbciApp,
         TxSettlementAbci.TransactionSubmissionAbciApp,
         ResetAndPauseAbci.ResetPauseAbciApp,
     ),

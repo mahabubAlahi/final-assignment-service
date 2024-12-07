@@ -17,7 +17,7 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the transaction payloads of the LearningAbciApp."""
+"""This module contains the transaction payloads of the BettingAbciApp."""
 
 from dataclasses import dataclass
 from typing import Optional

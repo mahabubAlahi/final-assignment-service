@@ -17,7 +17,7 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This package contains round behaviours of LearningAbciApp."""
+"""This package contains round behaviours of BettingAbciApp."""
 
 import json
 from abc import ABC
@@ -42,21 +42,21 @@ from packages.valory.skills.abstract_round_abci.behaviours import (
     BaseBehaviour,
 )
 from packages.valory.skills.abstract_round_abci.io_.store import SupportedFiletype
-from packages.valory.skills.learning_abci.models import (
+from packages.valory.skills.betting_abci.models import (
     CoingeckoSpecs,
     Params,
     SharedState,
 )
-from packages.valory.skills.learning_abci.payloads import (
+from packages.valory.skills.betting_abci.payloads import (
     DataPullPayload,
     DecisionMakingPayload,
     TxPreparationPayload,
 )
-from packages.valory.skills.learning_abci.rounds import (
+from packages.valory.skills.betting_abci.rounds import (
     DataPullRound,
     DecisionMakingRound,
     Event,
-    LearningAbciApp,
+    BettingAbciApp,
     SynchronizedData,
     TxPreparationRound,
 )
@@ -77,8 +77,8 @@ TO_ADDRESS_KEY = "to_address"
 METADATA_FILENAME = "metadata.json"
 
 
-class LearningBaseBehaviour(BaseBehaviour, ABC):  # pylint: disable=too-many-ancestors
-    """Base behaviour for the learning_abci behaviours."""
+class BettingBaseBehaviour(BaseBehaviour, ABC):  # pylint: disable=too-many-ancestors
+    """Base behaviour for the betting_abci behaviours."""
 
     @property
     def params(self) -> Params:
@@ -114,7 +114,7 @@ class LearningBaseBehaviour(BaseBehaviour, ABC):  # pylint: disable=too-many-anc
         return now
 
 
-class DataPullBehaviour(LearningBaseBehaviour):  # pylint: disable=too-many-ancestors
+class DataPullBehaviour(BettingBaseBehaviour):  # pylint: disable=too-many-ancestors
     """This behaviours pulls token prices from API endpoints and reads the native balance of an account"""
 
     matching_round: Type[AbstractRound] = DataPullRound
@@ -280,7 +280,7 @@ class DataPullBehaviour(LearningBaseBehaviour):  # pylint: disable=too-many-ance
 
 
 class DecisionMakingBehaviour(
-    LearningBaseBehaviour
+    BettingBaseBehaviour
 ):  # pylint: disable=too-many-ancestors
     """DecisionMakingBehaviour"""
 
@@ -386,7 +386,7 @@ class DecisionMakingBehaviour(
 
 
 class TxPreparationBehaviour(
-    LearningBaseBehaviour
+    BettingBaseBehaviour
 ):  # pylint: disable=too-many-ancestors
     """TxPreparationBehaviour"""
 
@@ -651,11 +651,11 @@ class TxPreparationBehaviour(
         return safe_tx_hash
 
 
-class LearningRoundBehaviour(AbstractRoundBehaviour):
-    """LearningRoundBehaviour"""
+class BettingRoundBehaviour(AbstractRoundBehaviour):
+    """BettingRoundBehaviour"""
 
     initial_behaviour_cls = DataPullBehaviour
-    abci_app_cls = LearningAbciApp  # type: ignore
+    abci_app_cls = BettingAbciApp  # type: ignore
     behaviours: Set[Type[BaseBehaviour]] = [  # type: ignore
         DataPullBehaviour,
         DecisionMakingBehaviour,

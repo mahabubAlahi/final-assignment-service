@@ -99,8 +99,8 @@ all-linters:
 .PHONY: fix-abci-app-specs
 fix-abci-app-specs:
 	export PYTHONPATH=${PYTHONPATH}:${PWD}
-	autonomy analyse fsm-specs --update --app-class LearningAbciApp --package packages/valory/skills/learning_abci/ || (echo "Failed to check learning_abci abci consistency" && exit 1)
-	autonomy analyse fsm-specs --update --app-class LearningChainedSkillAbciApp --package packages/valory/skills/learning_chained_abci/ || (echo "Failed to check learning_chained_abci abci consistency" && exit 1)
+	autonomy analyse fsm-specs --update --app-class BettingAbciApp --package packages/valory/skills/betting_abci/ || (echo "Failed to check betting_abci abci consistency" && exit 1)
+	autonomy analyse fsm-specs --update --app-class BettingChainedSkillAbciApp --package packages/valory/skills/betting_chained_abci/ || (echo "Failed to check betting_chained_abci abci consistency" && exit 1)
 
 
 .PHONY: tm

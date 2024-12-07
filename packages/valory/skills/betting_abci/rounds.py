@@ -17,7 +17,7 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This package contains the rounds of LearningAbciApp."""
+"""This package contains the rounds of BettingAbciApp."""
 
 from enum import Enum
 from typing import Dict, FrozenSet, Optional, Set, Tuple
@@ -34,7 +34,7 @@ from packages.valory.skills.abstract_round_abci.base import (
     EventToTimeout,
     get_name,
 )
-from packages.valory.skills.learning_abci.payloads import (
+from packages.valory.skills.betting_abci.payloads import (
     DataPullPayload,
     DecisionMakingPayload,
     TxPreparationPayload,
@@ -42,7 +42,7 @@ from packages.valory.skills.learning_abci.payloads import (
 
 
 class Event(Enum):
-    """LearningAbciApp Events"""
+    """BettingAbciApp Events"""
 
     DONE = "done"
     ERROR = "error"
@@ -174,11 +174,11 @@ class FinishedDecisionMakingRound(DegenerateRound):
 
 
 class FinishedTxPreparationRound(DegenerateRound):
-    """FinishedLearningRound"""
+    """FinishedBettingRound"""
 
 
-class LearningAbciApp(AbciApp[Event]):
-    """LearningAbciApp"""
+class BettingAbciApp(AbciApp[Event]):
+    """BettingAbciApp"""
 
     initial_round_cls: AppState = DataPullRound
     initial_states: Set[AppState] = {

@@ -15,9 +15,9 @@ repo_path=$PWD
 trap cleanup EXIT
 
 # Remove previous agent if exists
-if test -d learning_agent; then
+if test -d betting_agent; then
   echo "Removing previous agent build"
-  rm -r learning_agent
+  rm -r betting_agent
 fi
 
 # Remove empty directories to avoid wrong hashes
@@ -33,14 +33,14 @@ autonomy packages sync --source valory-xyz/open-aea:$AEA_VERSION --source valory
 autonomy packages lock
 
 # Fetch the agent
-autonomy fetch --local --agent valory/learning_agent
+autonomy fetch --local --agent valory/betting_agent
 
 # Replace params with env vars
 source .env
 python scripts/aea-config-replace.py
 
 # Copy and add the keys and issue certificates
-cd learning_agent
+cd betting_agent
 cp $PWD/../ethereum_private_key.txt .
 autonomy add-key ethereum ethereum_private_key.txt
 autonomy issue-certificates
