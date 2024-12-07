@@ -1,19 +1,19 @@
-name: learning_abci
+name: betting_abci
 author: valory
 version: 0.1.0
 type: skill
-description: A learning skill.
+description: A betting skill.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
-  __init__.py: bafybeiho3lkochqpmes4f235chq26oggmwnol3vjuvhosleoubbjirbwaq
-  behaviours.py: bafybeiaiy6sh7aqo4zzghnejv55vs43vqtpaipj5cpabx32qdjrqleeeie
-  dialogues.py: bafybeifqjbumctlffx2xvpga2kcenezhe47qhksvgmaylyp5ypwqgfar5u
-  fsm_specification.yaml: bafybeigbbydxuqephdpatb3fp3sxnvr77bfvvo5hwjimxfpgyl32wupe64
-  handlers.py: bafybeigjadr4thz6hfpfx5abezbwnqhbxmachf4efasrn4z2vqhsqgnyvi
-  models.py: bafybeicreffhurci7jzpwvxnlo5z3a2j3vcfgkopg2gtwwxfrncbzk77ra
-  payloads.py: bafybeidc6qqnfvd7qovjatt2i2kbga7pj6epdghlzqxdhzx6b6j6p7ubvm
-  rounds.py: bafybeibcxdou2opzsof4fcnaijfdgzpaaggmucyolhegns3k4zpzvuom2i
+  __init__.py: bafybeibfbdochurls5et457vvtrlrwzyjhwe6pklc2wgnkinusdxjqmdgm
+  behaviours.py: bafybeigj56qwfuxynwvyhp5f6qywesj6slis6mm3isoqvwxl77ogditdvi
+  dialogues.py: bafybeigco5tvikn5dbtrv2sl2j3u4ekb4bcxlu53zorn7ropsg6mf7mufq
+  fsm_specification.yaml: bafybeif5hvmammmzsuedwjekwal5jrpsqlwvfsb4dsefps5u7m3dnvrsgu
+  handlers.py: bafybeiclxdjexz7gxmucfakvsaijlaulx4fp62w3jmztkvxt6npaw3ji7q
+  models.py: bafybeidzxxocorn6mudmi5ccjnouxkqais2r4jrocz2rk4ltmnkfohiese
+  payloads.py: bafybeicd2nt6j45igdnebwpjteozahp232dffljwuhdnkcd33vusddr3q4
+  rounds.py: bafybeicpmcshtbtujl6ic3xlamz6s7qnbirajf3btmk3kk6xs7uxns26hi
 fingerprint_ignore_patterns: []
 connections: []
 contracts:
@@ -29,7 +29,7 @@ skills:
 behaviours:
   main:
     args: {}
-    class_name: LearningRoundBehaviour
+    class_name: BettingRoundBehaviour
 handlers:
   abci:
     args: {}
@@ -109,7 +109,7 @@ models:
       retry_attempts: 400
       retry_timeout: 3
       round_timeout_seconds: 30.0
-      service_id: learning
+      service_id: betting
       service_registry_address: null
       setup:
         all_participants:

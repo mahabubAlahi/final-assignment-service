@@ -17,13 +17,16 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the handlers for the skill of LearningChainedAbciApp."""
+"""This module contains the handlers for the skill of BettingAbciApp."""
 
 from packages.valory.skills.abstract_round_abci.handlers import (
     ABCIRoundHandler as BaseABCIRoundHandler,
 )
 from packages.valory.skills.abstract_round_abci.handlers import (
     ContractApiHandler as BaseContractApiHandler,
+)
+from packages.valory.skills.abstract_round_abci.handlers import (
+    HttpHandler as BaseHttpHandler,
 )
 from packages.valory.skills.abstract_round_abci.handlers import (
     IpfsHandler as BaseIpfsHandler,
@@ -37,7 +40,6 @@ from packages.valory.skills.abstract_round_abci.handlers import (
 from packages.valory.skills.abstract_round_abci.handlers import (
     TendermintHandler as BaseTendermintHandler,
 )
-from packages.valory.skills.learning_abci.handlers import HttpHandler as BaseHttpHandler
 
 
 ABCIHandler = BaseABCIRoundHandler
