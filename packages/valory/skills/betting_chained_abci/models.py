@@ -28,6 +28,7 @@ from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.models imp
 )
 from packages.valory.skills.betting_abci.models import (
     CoingeckoSpecs as BaseCoingeckoSpecs,
+    BettingSpecs as BaseBettingSpecs,
 )
 from packages.valory.skills.betting_abci.models import Params as BettingParams
 from packages.valory.skills.betting_abci.models import SharedState as BaseSharedState
@@ -79,3 +80,6 @@ class Params(  # pylint: disable=too-many-ancestors
 
 class CoingeckoSpecs(BaseCoingeckoSpecs):
     """A model that wraps ApiSpecs for Coingecko API."""
+
+class BettingSpecs(BaseBettingSpecs):
+    """A model that wraps ApiSpecs for Betting API."""

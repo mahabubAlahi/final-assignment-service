@@ -7,18 +7,18 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeibfbdochurls5et457vvtrlrwzyjhwe6pklc2wgnkinusdxjqmdgm
-  behaviours.py: bafybeigj56qwfuxynwvyhp5f6qywesj6slis6mm3isoqvwxl77ogditdvi
+  behaviours.py: bafybeifgxpxbdbvfxxem3uuq6wg2pcrx32t6caky3kzdwnfpysflpupdoy
   dialogues.py: bafybeigco5tvikn5dbtrv2sl2j3u4ekb4bcxlu53zorn7ropsg6mf7mufq
   fsm_specification.yaml: bafybeif5hvmammmzsuedwjekwal5jrpsqlwvfsb4dsefps5u7m3dnvrsgu
   handlers.py: bafybeiclxdjexz7gxmucfakvsaijlaulx4fp62w3jmztkvxt6npaw3ji7q
-  models.py: bafybeidzxxocorn6mudmi5ccjnouxkqais2r4jrocz2rk4ltmnkfohiese
-  payloads.py: bafybeicd2nt6j45igdnebwpjteozahp232dffljwuhdnkcd33vusddr3q4
-  rounds.py: bafybeicpmcshtbtujl6ic3xlamz6s7qnbirajf3btmk3kk6xs7uxns26hi
+  models.py: bafybeibeto7n7uzduc3fukwcnqujvbtfllvnv2saqhqpul5ggtlze5gru4
+  payloads.py: bafybeic2ddyy7vb3ltlpjl2rsjvao542ml2drq57xfncfo2k5snkzlipz4
+  rounds.py: bafybeihoyl5bbnip7szd3pwojtzlsbdrgdfpwh7fwomodd77gqgwuwvlxm
 fingerprint_ignore_patterns: []
 connections: []
 contracts:
 - valory/gnosis_safe:0.1.0:bafybeib375xmvcplw7ageic2np3hq4yqeijrvd5kl7rrdnyvswats6ngmm
-- valory/erc20:0.1.0:bafybeibyhuxozkkvsymqz45vxixr3w3bs4vsvxg2nsx5jlyi3f3hhn7ezi
+- valory/betting:0.1.0:bafybeibzl2l4lp3dhxddvgiep4cr3gedwun7xush2gbvbm62o722e2r7zq
 - valory/multisend:0.1.0:bafybeig5byt5urg2d2bsecufxe5ql7f4mezg3mekfleeh32nmuusx66p4y
 protocols:
 - valory/contract_api:1.0.0:bafybeidgu7o5llh26xp3u3ebq3yluull5lupiyeu6iooi2xyymdrgnzq5i
@@ -131,6 +131,9 @@ models:
       transfer_target_address: '0x0000000000000000000000000000000000000000'
       olas_token_address: '0xcE11e14225575945b8E6Dc0D4F2dD4C570f79d9f'
       multisend_address: '0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761'
+      betting_contract_address: '0xbc588Df1B9D5a1dDBD20e65ab62e4bF4ce272cb0'
+      match_key: NED-USA-3-12-2022
+      betting_amount: 1
     class_name: Params
   coingecko_specs:
     args:
@@ -147,6 +150,21 @@ models:
       retries: 5
       url: https://api.coingecko.com/api/v3/simple/price
     class_name: CoingeckoSpecs
+  betting_specs:
+    args:
+      api_id: betting
+      headers:
+        Accept: application/json
+      method: GET
+      parameters:
+        opponent1: NETHERLAND
+        opponent2: USA
+        bet_against: NETHERLAND
+      response_key: data
+      response_type: dict
+      retries: 5
+      url: http://3.84.150.52:3009/api/odd
+    class_name: BettingSpecs
   requests:
     args: {}
     class_name: Requests

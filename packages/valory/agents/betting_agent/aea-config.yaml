@@ -19,7 +19,7 @@ contracts:
 - valory/gnosis_safe_proxy_factory:0.1.0:bafybeicpcpyurm7gxir2gnlsgzeirzomkhcbnzr5txk67zdf4mmg737rtu
 - valory/multisend:0.1.0:bafybeig5byt5urg2d2bsecufxe5ql7f4mezg3mekfleeh32nmuusx66p4y
 - valory/service_registry:0.1.0:bafybeihafe524ilngwzavkhwz4er56p7nyar26lfm7lrksfiqvvzo3kdcq
-- valory/erc20:0.1.0:bafybeibyhuxozkkvsymqz45vxixr3w3bs4vsvxg2nsx5jlyi3f3hhn7ezi
+- valory/betting:0.1.0:bafybeibzl2l4lp3dhxddvgiep4cr3gedwun7xush2gbvbm62o722e2r7zq
 protocols:
 - open_aea/signing:1.0.0:bafybeihv62fim3wl2bayavfcg3u5e5cxu3b7brtu4cn5xoxd6lqwachasi
 - valory/abci:0.1.0:bafybeiaqmp7kocbfdboksayeqhkbrynvlfzsx4uy4x6nohywnmaig4an7u
@@ -32,8 +32,8 @@ protocols:
 skills:
 - valory/abstract_abci:0.1.0:bafybeidz54kvxhbdmpruzguuzzq7bjg4pekjb5amqobkxoy4oqknnobopu
 - valory/abstract_round_abci:0.1.0:bafybeiajjzuh6vf23crp55humonknirvv2f4s3dmdlfzch6tc5ow52pcgm
-- valory/betting_abci:0.1.0:bafybeialms56f2r4w5uz2u4amxyendjkettxyknxxnndreztzyl2dljj7e
-- valory/betting_chained_abci:0.1.0:bafybeigrcbll3thsq3pd2tdvq6aigktczsqfk64434q4fefgibjbk5eqyu
+- valory/betting_abci:0.1.0:bafybeicvtdlerhcre7t2zbbufn4bjcniyr27lzgpmrunht22s4oa2gkdqm
+- valory/betting_chained_abci:0.1.0:bafybeigvjxa3a4xortp7vsfgk6jfsckqrgy76vkqtnsaialwrtfzwgmuiy
 - valory/registration_abci:0.1.0:bafybeiffipsowrqrkhjoexem7ern5ob4fabgif7wa6gtlszcoaop2e3oey
 - valory/reset_pause_abci:0.1.0:bafybeif4lgvbzsmzljesxbphycdv52ka7qnihyjrjpfaseclxadcmm6yiq
 - valory/termination_abci:0.1.0:bafybeiekkpo5qef5zaeagm3si6v45qxcojvtjqe4a5ceccvk4q7k3xi3bi
@@ -205,6 +205,9 @@ models:
       termination_from_block: ${int:34088325}
       transfer_target_address: ${str:0x0000000000000000000000000000000000000000}
       olas_token_address: ${str:0xcE11e14225575945b8E6Dc0D4F2dD4C570f79d9f}
+      betting_contract_address: ${str:0xbc588Df1B9D5a1dDBD20e65ab62e4bF4ce272cb0}
+      match_key: ${str:NED-USA-3-12-2022}
+      betting_amount: ${int:1}
   coingecko_specs:
     args:
       api_id: coingecko
@@ -219,3 +222,17 @@ models:
       response_type: dict
       retries: 5
       url: https://api.coingecko.com/api/v3/simple/price
+  betting_specs:
+    args:
+      api_id: betting
+      headers:
+        Accept: application/json
+      method: GET
+      parameters:
+        opponent1: ${str:NETHERLAND}
+        opponent2: ${str:USA}
+        bet_against: ${str:NETHERLAND}
+      response_key: data
+      response_type: dict
+      retries: 5
+      url: http://3.84.150.52:3009/api/odd

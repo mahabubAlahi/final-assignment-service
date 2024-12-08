@@ -21,7 +21,7 @@ packages/valory/skills/*
 !packages/valory/services/betting_service
 !packages/valory/skills/betting_abci
 !packages/valory/skills/betting_chained_abci
-!packages/valory/contracts/erc20
+!packages/valory/contracts/betting
 
 leak_report
 /Pipfile.lock

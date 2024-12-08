@@ -7,7 +7,7 @@ license: Apache-2.0
 fingerprint:
   README.md: bafybeieoqbcvecjtzrhnjgeoxscq3r7cfccyozytchdkurq7vkuizt3a2u
 fingerprint_ignore_patterns: []
-agent: valory/betting_agent:0.1.0:bafybeih3lacbjcaamzuk2nlma2txhnxydvrbylecuczrqkojtsol76o7hi
+agent: valory/betting_agent:0.1.0:bafybeifnpfzr2clslnmfhhhm4vat6heok3ivntzdctaz3xgnaexzbcmake
 number_of_agents: 4
 deployment:
   agent:
@@ -94,6 +94,9 @@ extra:
         coingecko_api_key: ${COINGECKO_API_KEY:str:null}
         transfer_target_address: ${TRANSFER_TARGET_ADDRESS:str:0x0000000000000000000000000000000000000000}
         olas_token_address: ${OLAS_TOKEN_ADDRESS:str:0xcE11e14225575945b8E6Dc0D4F2dD4C570f79d9f}
+        betting_contract_address: ${BETTING_CONTRACT_ADDRESS:str:0xbc588Df1B9D5a1dDBD20e65ab62e4bF4ce272cb0}
+        match_key: ${MATCH_KEY:str:NED-USA-3-12-2022}
+        betting_amount: ${BETTING_AMOUNT:int:1}
     coingecko_specs:
       args:
         api_id: coingecko
@@ -108,6 +111,20 @@ extra:
         response_type: dict
         retries: 5
         url: https://api.coingecko.com/api/v3/simple/price
+    betting_specs:
+      args:
+        api_id: betting
+        headers:
+          Accept: application/json
+        method: GET
+        parameters:
+          opponent1: ${OPPONENT1:str:NETHERLAND}
+          opponent2: ${OPPONENT2:str:USA}
+          bet_against: ${BET_AGAINST:str:NETHERLAND}
+        response_key: data
+        response_type: dict
+        retries: 5
+        url: http://3.84.150.52:3009/api/odd
 1:
   models:
     benchmark_tool:
@@ -155,6 +172,9 @@ extra:
         coingecko_api_key: ${COINGECKO_API_KEY:str:null}
         transfer_target_address: ${TRANSFER_TARGET_ADDRESS:str:0x0000000000000000000000000000000000000000}
         olas_token_address: ${OLAS_TOKEN_ADDRESS:str:0xcE11e14225575945b8E6Dc0D4F2dD4C570f79d9f}
+        betting_contract_address: ${BETTING_CONTRACT_ADDRESS:str:0xbc588Df1B9D5a1dDBD20e65ab62e4bF4ce272cb0}
+        match_key: ${MATCH_KEY:str:NED-USA-3-12-2022}
+        betting_amount: ${BETTING_AMOUNT:int:1}
     coingecko_specs:
       args:
         api_id: coingecko
@@ -169,6 +189,20 @@ extra:
         response_type: dict
         retries: 5
         url: https://api.coingecko.com/api/v3/simple/price
+    betting_specs:
+      args:
+        api_id: betting
+        headers:
+          Accept: application/json
+        method: GET
+        parameters:
+          opponent1: ${OPPONENT1:str:NETHERLAND}
+          opponent2: ${OPPONENT2:str:USA}
+          bet_against: ${BET_AGAINST:str:NETHERLAND}
+        response_key: data
+        response_type: dict
+        retries: 5
+        url: http://3.84.150.52:3009/api/odd
 2:
   models:
     benchmark_tool:
@@ -216,6 +250,9 @@ extra:
         coingecko_api_key: ${COINGECKO_API_KEY:str:null}
         transfer_target_address: ${TRANSFER_TARGET_ADDRESS:str:0x0000000000000000000000000000000000000000}
         olas_token_address: ${OLAS_TOKEN_ADDRESS:str:0xcE11e14225575945b8E6Dc0D4F2dD4C570f79d9f}
+        betting_contract_address: ${BETTING_CONTRACT_ADDRESS:str:0xbc588Df1B9D5a1dDBD20e65ab62e4bF4ce272cb0}
+        match_key: ${MATCH_KEY:str:NED-USA-3-12-2022}
+        betting_amount: ${BETTING_AMOUNT:int:1}
     coingecko_specs:
       args:
         api_id: coingecko
@@ -230,6 +267,20 @@ extra:
         response_type: dict
         retries: 5
         url: https://api.coingecko.com/api/v3/simple/price
+    betting_specs:
+      args:
+        api_id: betting
+        headers:
+          Accept: application/json
+        method: GET
+        parameters:
+          opponent1: ${OPPONENT1:str:NETHERLAND}
+          opponent2: ${OPPONENT2:str:USA}
+          bet_against: ${BET_AGAINST:str:NETHERLAND}
+        response_key: data
+        response_type: dict
+        retries: 5
+        url: http://3.84.150.52:3009/api/odd
 3:
   models:
     benchmark_tool:
@@ -277,6 +328,9 @@ extra:
         coingecko_api_key: ${COINGECKO_API_KEY:str:null}
         transfer_target_address: ${TRANSFER_TARGET_ADDRESS:str:0x0000000000000000000000000000000000000000}
         olas_token_address: ${OLAS_TOKEN_ADDRESS:str:0xcE11e14225575945b8E6Dc0D4F2dD4C570f79d9f}
+        betting_contract_address: ${BETTING_CONTRACT_ADDRESS:str:0xbc588Df1B9D5a1dDBD20e65ab62e4bF4ce272cb0}
+        match_key: ${MATCH_KEY:str:NED-USA-3-12-2022}
+        betting_amount: ${BETTING_AMOUNT:int:1}
     coingecko_specs:
       args:
         api_id: coingecko
@@ -291,6 +345,20 @@ extra:
         response_type: dict
         retries: 5
         url: https://api.coingecko.com/api/v3/simple/price
+    betting_specs:
+      args:
+        api_id: betting
+        headers:
+          Accept: application/json
+        method: GET
+        parameters:
+          opponent1: ${OPPONENT1:str:NETHERLAND}
+          opponent2: ${OPPONENT2:str:USA}
+          bet_against: ${BET_AGAINST:str:NETHERLAND}
+        response_key: data
+        response_type: dict
+        retries: 5
+        url: http://3.84.150.52:3009/api/odd
 ---
 public_id: valory/ledger:0.19.0
 type: connection

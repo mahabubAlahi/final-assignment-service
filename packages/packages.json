@@ -1,10 +1,10 @@
 {
     "dev": {
-        "contract/valory/erc20/0.1.0": "bafybeibyhuxozkkvsymqz45vxixr3w3bs4vsvxg2nsx5jlyi3f3hhn7ezi",
-        "skill/valory/betting_abci/0.1.0": "bafybeialms56f2r4w5uz2u4amxyendjkettxyknxxnndreztzyl2dljj7e",
-        "skill/valory/betting_chained_abci/0.1.0": "bafybeigrcbll3thsq3pd2tdvq6aigktczsqfk64434q4fefgibjbk5eqyu",
-        "agent/valory/betting_agent/0.1.0": "bafybeih3lacbjcaamzuk2nlma2txhnxydvrbylecuczrqkojtsol76o7hi",
-        "service/valory/betting_service/0.1.0": "bafybeidjno4ixoxlw5ftzf7ft54qh5cdfccrcldvzt6zpakq4mpjt32rku"
+        "contract/valory/betting/0.1.0": "bafybeibzl2l4lp3dhxddvgiep4cr3gedwun7xush2gbvbm62o722e2r7zq",
+        "skill/valory/betting_abci/0.1.0": "bafybeicvtdlerhcre7t2zbbufn4bjcniyr27lzgpmrunht22s4oa2gkdqm",
+        "skill/valory/betting_chained_abci/0.1.0": "bafybeigvjxa3a4xortp7vsfgk6jfsckqrgy76vkqtnsaialwrtfzwgmuiy",
+        "agent/valory/betting_agent/0.1.0": "bafybeifnpfzr2clslnmfhhhm4vat6heok3ivntzdctaz3xgnaexzbcmake",
+        "service/valory/betting_service/0.1.0": "bafybeiebzwjqotg2nsvmnbgyy37vmxvmjmauaqcscgwcaetrata7qj2b4m"
     },
     "third_party": {
         "protocol/open_aea/signing/1.0.0": "bafybeihv62fim3wl2bayavfcg3u5e5cxu3b7brtu4cn5xoxd6lqwachasi",
