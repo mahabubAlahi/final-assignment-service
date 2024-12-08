@@ -55,6 +55,9 @@ class Params(BaseParams):
             "transfer_target_address", kwargs, str
         )
         self.olas_token_address = self._ensure("olas_token_address", kwargs, str)
+        self.betting_contract_address = self._ensure("betting_contract_address", kwargs, str)
+        self.match_key = self._ensure("match_key", kwargs, str)
+        self.betting_amount = self._ensure("betting_amount", kwargs, int)
 
         # multisend address is used in other skills, so we cannot pop it using _ensure
         self.multisend_address = kwargs.get("multisend_address", "")
@@ -64,3 +67,6 @@ class Params(BaseParams):
 
 class CoingeckoSpecs(ApiSpecs):
     """A model that wraps ApiSpecs for Coingecko API."""
+
+class BettingSpecs(ApiSpecs):
+    """A model that wraps ApiSpecs for Betting API."""

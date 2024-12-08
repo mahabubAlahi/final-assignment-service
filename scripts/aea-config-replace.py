@@ -67,6 +67,36 @@ def main() -> None:
                 "transfer_target_address"
             ] = f"${{str:{os.getenv('TRANSFER_TARGET_ADDRESS')}}}"  # type: ignore
 
+            # OPPONENT1
+            config[-1]["models"]["params"]["args"][
+                "opponent1"
+            ] = f"${{str:{os.getenv('OPPONENT1')}}}"  # type: ignore
+
+            # OPPONENT2
+            config[-1]["models"]["params"]["args"][
+                "opponent2"
+            ] = f"${{str:{os.getenv('OPPONENT2')}}}"  # type: ignore
+
+            # BET_AGAINST
+            config[-1]["models"]["params"]["args"][
+                "bet_against"
+            ] = f"${{str:{os.getenv('BET_AGAINST')}}}"  # type: ignore
+
+            # BETTING_CONTRACT_ADDRESS
+            config[-1]["models"]["params"]["args"][
+                "betting_contract_address"
+            ] = f"${{str:{os.getenv('BETTING_CONTRACT_ADDRESS')}}}"  # type: ignore
+
+            # MATCH_KEY
+            config[-1]["models"]["params"]["args"][
+                "match_key"
+            ] = f"${{str:{os.getenv('MATCH_KEY')}}}"  # type: ignore
+
+            # BETTING_AMOUNT
+            config[-1]["models"]["params"]["args"][
+                "betting_amount"
+            ] = f"${{str:{os.getenv('BETTING_AMOUNT')}}}"  # type: ignore
+
     with open(Path("betting_agent", "aea-config.yaml"), "w", encoding="utf-8") as file:
         yaml.dump_all(config, file, sort_keys=False)
 

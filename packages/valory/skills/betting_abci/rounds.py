@@ -62,26 +62,21 @@ class SynchronizedData(BaseSynchronizedData):
         """Strictly get a collection and return it deserialized."""
         serialized = self.db.get_strict(key)
         return CollectionRound.deserialize_collection(serialized)
-
+    
     @property
-    def price(self) -> Optional[float]:
-        """Get the token price."""
-        return self.db.get("price", None)
-
+    def betting_result(self) -> bool:
+        """Get the result of the betting."""
+        return self.db.get("betting_result", None)
+    
     @property
-    def price_ipfs_hash(self) -> Optional[str]:
-        """Get the price_ipfs_hash."""
-        return self.db.get("price_ipfs_hash", None)
-
+    def betting_ipfs_hash(self) -> str:
+        """Get the betting_ipfs_hash."""
+        return self.db.get("betting_ipfs_hash", None)
+    
     @property
-    def native_balance(self) -> Optional[float]:
-        """Get the native balance."""
-        return self.db.get("native_balance", None)
-
-    @property
-    def erc20_balance(self) -> Optional[float]:
-        """Get the erc20 balance."""
-        return self.db.get("erc20_balance", None)
+    def has_placed_bet(self) -> bool:
+        """Get the has_placed_bet."""
+        return self.db.get("has_placed_bet", None)
 
     @property
     def participant_to_data_round(self) -> DeserializedCollection:
@@ -119,10 +114,9 @@ class DataPullRound(CollectSameUntilThresholdRound):
     # and where to store it in the synchronized data. Notice that the order follows the same order
     # from the payload class.
     selection_key = (
-        get_name(SynchronizedData.price),
-        get_name(SynchronizedData.price_ipfs_hash),
-        get_name(SynchronizedData.native_balance),
-        get_name(SynchronizedData.erc20_balance),
+        get_name(SynchronizedData.betting_result),
+        get_name(SynchronizedData.betting_ipfs_hash),
+        get_name(SynchronizedData.has_placed_bet),
     )
 
     # Event.ROUND_TIMEOUT  # this needs to be referenced for static checkers

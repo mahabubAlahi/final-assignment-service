@@ -1,6 +1,86 @@
 ## Betting Service
 
-A service to learn about [Olas](https://olas.network/) agents and [Open Autonomy](https://github.com/valory-xyz/open-autonomy).
+This service will work based on the common betting strategy called odds comparison or value betting. It will usually aggregate football match odds from multiple websites, apply custom logic to analyze them and decide where and how to place a bet.
+
+- `Custom Betting Odds API`
+  - It is a simple Node.js application built using the Express framework. The API serves predefined betting odds for football matches and allows users to query match odds and check if a specific bet has the highest odds.
+    - Features
+       - Endpoint to retrieve betting odds for specific matches.
+    - API endpoint for Getting Match Odds
+       - URL: `/api/odd`
+       - Method: GET
+       - Query Parameters:
+         - opponent1 (required): Name of the first opponent.
+         - opponent2 (required): Name of the second opponent.
+         - bet_against (required): The specific bet to check for the highest odds.
+       - Description: Fetches the betting odds for a specific match and checks if the specified bet has the highest odds.
+       - Response:
+         - Success:
+            ```JS
+            {
+                "execStatus": true,
+                "msg": "Successfully get the odds!",
+                "data": {
+                    "match": {
+                        "PORTUGAL": 3.5,
+                        "SWITZERLAND": 2.0,
+                        "DRAW": 2.2
+                    },
+                    "result": true
+                }
+            }
+            ```
+    - Github Repository Link: [Simple betting api](https://github.com/mahabubAlahi/simple-betting-api.git)
+    - Deployed in AWS EC2:- `http://3.84.150.52:3009`
+
+- `Betting Smart Contract`
+  - This smart contract allows users to place bets on predefined matches and check their betting status. It also provides functionality for the contract owner to add new match keys.
+  - Features
+    - Predefined Match Keys:
+      - The contract owner can initialize and add match keys.
+    - Place Bets:
+      - Users can place bets on predefined matches by sending Ether.
+    - Check Betting Status:
+      - Users can verify if they have placed a bet on a specific match.
+  -  Github Repository Link: [Betting smart contract](https://github.com/mahabubAlahi/betting-contract.git)
+
+- This betting service has two main skills, It also has a contract, agent and service file named.
+   - betting_abci
+   - betting_chained_abci
+   - betting contract
+   - betting_agent
+   - betting_service
+
+- State transition of `betting_abci` skill
+  - States
+     - Start States:
+         - **DataPullRound**:- In this round, it pulls betting result from the `Custom Betting Odds API`, store the betting result in the IPFS, and check whether the predefined user already place the bet in the `Betting Smart Contract`. Finally it stores `betting_result`, `betting_ipfs_hash`, `has_placed_bet` in the payload.
+     - Intermediate States:
+         - **DecisionMakingRound**:- It generally takes a decision whether the bet should be placed on the `Betting Smart Contract` based on the previous round's value. If the betting result is `True` and the user has not placed the bet yet, it returns `TRANSACT` event, otherwise it returns `DONE` event.
+         - **TxPreparationRound**:- In this round, depending on the timestamp's last number, it will make a native transaction, a betting transaction or both.
+      - Final States:
+         - **FinishedDecisionMakingRound**
+         - **FinishedTxPreparationRound**
+      - Default Start State
+         - **DataPullRound**: The state where the application begins its execution.
+      - Final States
+        The application reaches completion in either of the following states:
+        - **FinishedDecisionMakingRound**
+        - **FinishedTxPreparationRound**
+- State Transitions
+The transition_func defines how the application transitions between states based on events:
+  - DataPullRound:
+     - **DONE**: Transition to DecisionMakingRound.
+     - **NO_MAJORITY or ROUND_TIMEOUT**: Remain in DataPullRound.
+  - DecisionMakingRound:
+    - **DONE**: Transition to FinishedDecisionMakingRound.
+    - **ERROR**: Transition to FinishedDecisionMakingRound.
+    - **NO_MAJORITY or ROUND_TIMEOUT**: Remain in 
+  - DecisionMakingRound.
+    - **TRANSACT**: Transition to TxPreparationRound.
+  - TxPreparationRound:
+    - **DONE**: Transition to FinishedTxPreparationRound.
+    - **NO_MAJORITY or ROUND_TIMEOUT**: Remain in TxPreparationRound.
 
 
 ## System requirements

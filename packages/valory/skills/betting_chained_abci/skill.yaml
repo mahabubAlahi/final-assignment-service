@@ -12,7 +12,7 @@ fingerprint:
   dialogues.py: bafybeiakqfqcpg7yrxt4bsyernhy5p77tci4qhmgqqjqi3ttx7zk6sklca
   fsm_specification.yaml: bafybeiaa3bye5rww34k4xoa3ska5fvbedjdhypvtqlsp4obvisuioixmli
   handlers.py: bafybeifbjqkt67oafxhpim5vmkl7jiphj5jcklbfvxmuxlmebv2yfc3bna
-  models.py: bafybeienrnv34keg6nwsrfdnbuiaxniqukrpdvzgjyocmhunmw54vgmm64
+  models.py: bafybeiacomoypfeaz3p3hyee4xskxmyurz452nfjwyb64yeqxi33gr7wom
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
@@ -22,7 +22,7 @@ skills:
 - valory/registration_abci:0.1.0:bafybeiffipsowrqrkhjoexem7ern5ob4fabgif7wa6gtlszcoaop2e3oey
 - valory/reset_pause_abci:0.1.0:bafybeif4lgvbzsmzljesxbphycdv52ka7qnihyjrjpfaseclxadcmm6yiq
 - valory/termination_abci:0.1.0:bafybeiekkpo5qef5zaeagm3si6v45qxcojvtjqe4a5ceccvk4q7k3xi3bi
-- valory/betting_abci:0.1.0:bafybeialms56f2r4w5uz2u4amxyendjkettxyknxxnndreztzyl2dljj7e
+- valory/betting_abci:0.1.0:bafybeicvtdlerhcre7t2zbbufn4bjcniyr27lzgpmrunht22s4oa2gkdqm
 - valory/transaction_settlement_abci:0.1.0:bafybeielv6eivt2z6nforq43xewl2vmpfwpdu2s2vfogobziljnwsclmlm
 behaviours:
   main:
@@ -139,6 +139,9 @@ models:
       default_chain_id: gnosis
       transfer_target_address: '0x0000000000000000000000000000000000000000'
       olas_token_address: '0xcE11e14225575945b8E6Dc0D4F2dD4C570f79d9f'
+      betting_contract_address: '0xbc588Df1B9D5a1dDBD20e65ab62e4bF4ce272cb0'
+      match_key: NED-USA-3-12-2022
+      betting_amount: 1
     class_name: Params
   coingecko_specs:
     args:
@@ -155,6 +158,21 @@ models:
       retries: 5
       url: https://api.coingecko.com/api/v3/simple/price
     class_name: CoingeckoSpecs
+  betting_specs:
+    args:
+      api_id: betting
+      headers:
+        Accept: application/json
+      method: GET
+      parameters:
+        opponent1: NETHERLAND
+        opponent2: USA
+        bet_against: NETHERLAND
+      response_key: data
+      response_type: dict
+      retries: 5
+      url: http://3.84.150.52:3009/api/odd
+    class_name: BettingSpecs
   randomness_api:
     args:
       api_id: cloudflare

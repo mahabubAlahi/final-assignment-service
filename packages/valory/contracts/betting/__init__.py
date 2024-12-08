@@ -17,4 +17,4 @@
 #
 # ------------------------------------------------------------------------------
 
-"""This module contains the support resources for an ERC20 token."""
+"""This module contains the support resources for a Betting Contract."""
