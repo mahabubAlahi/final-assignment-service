@@ -30,7 +30,7 @@ This service will work based on the common betting strategy called odds comparis
                 }
             }
             ```
-    - Github Repository Link: [Simple betting api](#https://github.com/mahabubAlahi/simple-betting-api.git)
+    - Github Repository Link: [Simple betting api](https://github.com/mahabubAlahi/simple-betting-api.git)
     - Deployed in AWS EC2:- `http://3.84.150.52:3009`
 
 - `Betting Smart Contract`
@@ -42,7 +42,7 @@ This service will work based on the common betting strategy called odds comparis
       - Users can place bets on predefined matches by sending Ether.
     - Check Betting Status:
       - Users can verify if they have placed a bet on a specific match.
-  -  Github Repository Link: [Betting smart contract](#https://github.com/mahabubAlahi/betting-contract.git)
+  -  Github Repository Link: [Betting smart contract](https://github.com/mahabubAlahi/betting-contract.git)
 
 - This betting service has two main skills, It also has a contract, agent and service file named.
    - betting_abci
